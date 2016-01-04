@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/css/css.css"/>
+</head>
+<body>
+
+    <div class="sign-header">
+
+        <div class="container">
+            <div class="page-header">
+                <div class="head-font">
+                    <h1>{:C('WEB_TITLE')}</h1>
+                    <small>{:C('WEB_TITLE')}是一个自由开放的社区</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="page-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <h3>Sign in</h3>
+                    <div class="input-css"></div>
+                    <form method="post" action="{:U('Sign/sign')}">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon">邮箱</span>
+                            <input type="email" class="form-control" placeholder="" name="email">
+                        </div>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon">密码</span>
+                            <input type="password" class="form-control" placeholder="" name="password">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="remember"> Remember me
+                            </label>
+                        </div>
+                        <div class="btn-css">
+                            <button type="submit" class="btn btn-success pull-left">Sign in</button>
+                    </form>
+                        <a href="#" type="button" class="btn btn-default pull-right">Forgot you password?</a>
+                    </div>
+                    <div class="footer">
+                        <div class="page-header">
+                        </div>
+                        <p>还没有帐户? <a href="{:U('Regist/index')}">注册</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

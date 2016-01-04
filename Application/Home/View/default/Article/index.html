@@ -1,0 +1,74 @@
+<include file="public/header" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 ">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <center><h3>{$data['title']}</h3> </center>
+                </div>
+                <div class="panel-body">
+                    {$data['content']}
+                </div>
+                <div class="panel-footer">
+                    <a href="{$data['userid']}"><img src="{:C('USER_IMAGE')}{$data.image}" width="45px" height="45px" class="img-rounded"></a><small>{$data['username']} · {$data['creattime']|geshidate} · {$data.view} 次点击</small>
+                    <a class="btn btn-success btn-xs pull-right" href="{:U('/Home/Collect/like')}?id={$data['id']}"><span class="glyphicon glyphicon-heart"></span>加入收藏</a>
+                </div>
+            </div>
+
+
+            <volist name="list" id="vo">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <php>if($_GET['p'] == null){ $_GET['p'] = 1; }</php>
+                        <h3 class="panel-title">{$_GET['p']*10-10+$i}#</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object img-rounded" src="{:C('WEB_DIR')}{:C('USER_IMAGE')}{$vo.image}" width="45px" height="45px" alt="...">
+                                </a>
+                            </div>
+                            <div class="media-body media-right">
+                                 {$vo.content}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <span class="glyphicon glyphicon-user"></span>{$vo.username}&nbsp;&nbsp; <span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;{$vo.creattime|geshidate}   <a href="#" onclick="atAdd('{$vo.username}');return false">回复</a>
+                    </div>
+                </div>
+            </volist>
+
+
+
+            <center>
+                <nav>
+                    <ul class="pagination">
+                        {$page}
+                    </ul>
+                </nav>
+            </center>
+
+            <form method="post" action="{:U('review')}">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">发表评论</h3>
+                </div>
+                <div class="panel-body">
+
+                    <textarea class="form-control text-success" id="text" placeholder="目前@功能，待开发中..." name="content"></textarea>
+                </div>
+                <div class="panel-footer">
+                    <input type="hidden" value="{$data['id']}" name="articleid">
+
+                    <button class="btn btn-success btn-sm " type="submit" >发表评论</button>
+
+                    <p class="pull-right">• 请尽量让自己的回复能够对别人有帮助</p>
+                </div>
+            </div>
+            </form>
+        </div>
+    <include file="public/singbar" />
+    <include file="public/footer" />

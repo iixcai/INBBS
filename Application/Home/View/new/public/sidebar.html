@@ -1,0 +1,60 @@
+<div class="col-md-4">
+    <present name="userinfo">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">你好，{$userinfo.username}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+
+                <div class="col-xs-12">
+                    <a href="{:U('/u/' . $userinfo['username'])}">
+                        <img class="img-rounded img-responsive pull-left" src="__PUBLIC__/upload/{$userinfo.image}" height="50px" width="50px" alt="avatar">
+                    </a>
+                    <p class="username"><a href="{:U('/u/' . $userinfo['username'])}">{$userinfo.username}</a></p>
+                </div>
+                <div class="user-panel">
+                    <div class="col-xs-4"><center><a href="#"><p class="big-font">0</p><p class="text-muted">节点收藏</p></a></center></div>
+                    <div class="col-xs-4 side-border"><center><a href="{:U('User/collect')}"><p class="big-font">0</p><p class="text-muted">主题收藏</p></a></center></div>
+                    <div class="col-xs-4"><center><a href="#"><p class="big-font">0</p><p class="text-muted">帐户资金</p></a></center></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="panel-footer">
+            <a href="#">未读提醒［待开发］</a>
+        </div>
+    </div>
+    <else />
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">你好</h3>
+            </div>
+            <div class="panel-body">
+                <p>欢迎访问 {:C('WEB_TITLE')} ！<p/><p>{:C('WEB_TITLE')} 是一个简约开源的轻社区程序。<p/><p>目前你所看到的是测试版<p/>                                            </div>
+            <div class="panel-footer">
+                <a href="{:U('Regist/index')}">注册</a>　<a href="{:U('Sign/index')}">登录</a>
+            </div>
+        </div>
+</present>
+    <present name="list">
+    <ul class="list-group hot-topic">
+        <li class="list-group-item hot-topic-title">热门主题</li>
+        <volist name="listdata" id="listdata">
+            <li class="list-group-item">
+                <a href="{:U('/t/' . $listdata['id'])}">{$listdata.title}</a>
+            </li>
+        </volist>
+    </ul>
+    </present>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">社区运行状况</h3>
+        </div>
+        <div class="panel-body">
+            <p>注册会员<span class="badge pull-right">{$bbsinfo.usernum}</span></p>
+            <p>创建主题<span class="badge pull-right">{$bbsinfo.articlenum}</span> </p>
+            <p>主题回复<span class="badge pull-right">{$bbsinfo.articlenum}</span> </p>
+        </div>
+    </div>
+</div><!-- /.col-md-4 -->

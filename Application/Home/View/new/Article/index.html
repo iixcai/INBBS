@@ -1,0 +1,96 @@
+<include file="public/header" title="{$data.title} | {:C('WEB_TITLE')}"/>
+<script language="javascript" type="text/javascript">
+    function atAdd(uid) {
+        var content = document.getElementsByName("content")[0];
+        content.value += "@"+uid+"，";
+    }
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading topic-detail-heading">
+                    <div class="pull-right"><a href="{:U('/u/' . $data['username'])}"><img class="img-rounded" src="__PUBLIC__/upload/{$data.image} " height="45px" width="45px" alt="{$data.username}_avatar"></a></div>
+                    <p><a href="{:U('Index/index')}">首页</a> / <a href="{:U('/n/' . $data['nodeid'])}">{$data.node}</a></p>
+                    <h1 class="panel-title">{$data.title}</h1>
+                    <small class="text-muted">
+                        <span>By <a href="{:U('/u/' . $data['username'])}">{$data.username}</a></span>&nbsp;•&nbsp;
+                        <span>{$data.creattime|geshidate}</span>&nbsp;•&nbsp;
+                        <span>{$data.view}次点击</span>
+                    </small>
+                </div>
+                <div class="panel-body">
+                    {$data.content|htmlspecialchars_decode}
+                    </div>
+                <div class="panel-footer">
+                    <a href="{:U('/Home/Collect/like')}?id={$data['id']}" class="" role="button"><small class="text-muted">加入收藏</small></a>
+                </div>
+            </div><!-- /.panel content -->
+            <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><small>{$data.review} 回复 | 直到{$data.lasttime|geshidate}</small><a href="#Reply" class="pull-right"><small class="text-muted">添加回复</small></a></h3>
+            </div>
+
+            
+            <if condition="$count eq 0 ">
+                <div class="panel-body">
+                    数据库：这里一条评论都没有~
+                </div>
+                </div>
+            <else />
+                <div class="panel-body">
+                <ul class="media-list">
+                    <volist name="list" id="vo">
+                <li class="media" id="Reply{$i}">
+                    <php>if($_GET['p'] == null){ $_GET['p'] = 1; }</php>
+                    <a href="#"onclick="atAdd('{$vo.username}');return false" class="pull-right text-muted">#{$_GET['p']*10-10+$i} <span class="glyphicon glyphicon-share-alt"></span></a>
+                    <a class="media-left" href="{:U('/u/' . $vo['username'])}">
+                        <img class="img-rounded" src="__PUBLIC__/upload/{$vo.image} " height="45px" width="45px" alt="{$vo.username}_avatar">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading topic-list-heading"><a href="{:U('/u/' . $vo['username'])}">{$vo.username}</a>&nbsp;&nbsp;<small>{$vo.creattime|geshidate}</small></h4>
+                        {$vo.content}                                </div>
+                </li>
+                <hr class="smallhr">
+                </volist>
+                    <ul class="pager">
+                        {$page}
+                    </ul>
+                </ul>
+                </div>
+                </div><!-- /.panel comment -->
+            </if>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title" id="replay">添加一条新回复</h3>
+                </div>
+                <div class="panel-body">
+                    <present name="userinfo">
+                    <form method="post" action="{:U('review')}">
+
+                                <textarea class="form-control text-success" id="text" placeholder="目前@功能，待开发中..." name="content"></textarea>
+
+                </div>
+                <div class="panel-footer">
+                                <input type="hidden" value="{$data['id']}" name="articleid">
+
+                                <button class="btn btn-success btn-sm " type="submit" >发表评论</button>
+
+                                <p class="pull-right">一针见血的回复</p>
+                            </div>
+
+                    </form>
+                <else />
+                <div class="well text-center">
+                    <a href="{:U('Regist/index')}">注册</a> 参与讨论 or <a href="{:U('Sign/index')}">登录</a>
+                </div>
+            </div>
+            </present>
+
+            </div><!-- /.panel add comment -->
+        </div><!-- /.col-md-8 -->
+
+<include file="public/sidebar"/>
+    </div>
+</div>
+        <include file="public/footer"/>

@@ -1,0 +1,42 @@
+.head-font{
+    text-align: center;
+}
+.input-css{
+    margin-top: 25px;
+}
+.btn-css{
+    margin-top: 25px;
+}
+.footer{
+    margin-top: 70px;
+}
+#foot-a{
+    text-align: left;
+}
+#foot-b{
+    text-align: right;
+}
+hr{
+    margin-top: 10px;
+}
+.box{
+    background-color: #9acfea;
+    width: auto;
+    height: auto;
+}
+.progress {
+    margin-top: 7.5px;
+    margin-bottom: 7.5px;
+}
+.media {
+    margin-top: -14px;
+}
+hr {
+    margin-top: 5px;
+}
+textarea.form-control {
+    height: 450px;
+}
+textarea.form-control#text {
+    height: 90px;
+}

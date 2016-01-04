@@ -1,0 +1,55 @@
+<include file="public/header" xmlns="http://www.w3.org/1999/html"/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 ">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{$user.username}的主页</h3>
+                </div>
+                <div class="panel-body">
+                    <img src="{:C('WEB_DIR')}{:C('USER_IMAGE')}{$user.image}" class="pull-left img-rounded" height="200px" width="200px">
+                    <div class="pull-right">
+                        <span class="glyphicon glyphicon-user"></span></span>用户账号：<strong>{$user.username}</strong><br>
+                        <span class="glyphicon glyphicon-time"></span>注册时间：<strong>{$user.registtime}</strong><br>
+                        <span class="glyphicon glyphicon-envelope"></span>注册邮箱：<php>if($user['username'] == $userinfo['username']){echo "<strong>".$user['email']."</strong><br>";}</php><small class="pull-right">注册邮箱只有用户自己才能查看</small>
+                        <br>
+                        <span class="glyphicon glyphicon-send"></span>创建主题：<span class="badge">{$user.tnum}</span>
+                        <br>
+                        <span class="glyphicon glyphicon-pushpin"></span>主题回复：<span class="badge">{$user.rnum}</span>
+                    </div>
+                </div>
+                <div class="panel-footer">
+
+                    <present name="modify">
+                        <a href="{:U('update')}" class=""><span class="glyphicon glyphicon-cog"></span>修改个人资料</a>
+                        <else />
+                        发送内信
+                    </present>
+                    <div class="pull-right"> {$user.userinfo}</div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{$user.username}创建的主题（最近十个）</h3>
+                </div>
+                <div class="panel-body">
+                    <volist name="userarticle" id="vo"><a href="{:U('Article/index',array('id'=>$vo['id']))}">{$vo.title}</a><span class="badge pull-right">{$vo.review}</span>
+                        <hr>
+                    </volist>
+                    目前展示前十条
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+        <include file="public/singbar" />
+        <include file="public/footer"/>

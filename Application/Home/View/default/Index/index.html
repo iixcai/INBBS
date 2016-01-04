@@ -1,0 +1,54 @@
+<include file="public/header" />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 ">
+                <div class="jumbotron">
+                    <h1>Hello, world!</h1>
+                    <p>全新设计，只愿为你</p>
+                    <p><a class="btn btn-success btn-lg" href="#" role="button">Learn more</a></p>
+                </div>
+                <volist name="list" id="vo">
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <a href="/bbs/u/{$vo.username}">
+                            <img class="media-object img-rounded" src="__PUBLIC__/upload/{$vo.image}" alt="..." height="45px" width="45px">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="{:U('Article/index',array('id'=>$vo['id']))}">{$vo.title}</a>
+                            <br><small><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;<a href="{:U('User/index',array('user'=>$vo['username']))}">{$vo.username}</a>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;&nbsp;<a href="{:U('Node/index',array('id'=>$vo['nodeid']))}">{$vo.node}</a>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;&nbsp;{$vo.creattime|geshidate}
+                            <span class="badge pull-right">{$vo.review}</span></small>
+                        </h4>
+                    </div>
+                </div>
+                <hr>
+                </volist>
+
+
+
+
+                <center>
+                    <nav>
+                        <ul class="pagination">
+                            {$page}
+                        </ul>
+                    </nav>
+                </center>
+
+
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">热门节点</div>
+                    <div class="panel-body">
+                        <volist name="node" id="no">
+                        <a href="{:U('Node/index',array('id' => $no['id']))}" class="btn btn-default btn-xs">{$no.node}</a>&nbsp;
+                        </volist>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <include file="public/singbar" />
+        <include file="public/footer"/>

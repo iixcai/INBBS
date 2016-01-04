@@ -1,0 +1,58 @@
+<include file="public/header" title="{$nodeinfo.node} | {:C('WEB_TITLE')}"/>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <present name="node">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">节点导航<a href="{:U('node/index')}" class="pull-right">浏览所有节点</a></h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-2">官方专区</div>
+                                    <div class="col-sm-10">
+                                        <p><a href="{:U('/n/' . 5)}" class="btn btn-default btn-xs nodes" role="button">开发动态</a><a href="{:U('/n/' . 2)}" class="btn btn-default btn-xs nodes" role="button">程序发布</a></p></div></div>
+                                <div class="row"><div class="col-sm-2">程序使用</div><div class="col-sm-10"><p><a href="{:U('/n/' . 4)}" class="btn btn-default btn-xs nodes" role="button">反馈建议</a><a href="{:U('/n/' . 3)}" class="btn btn-default btn-xs nodes" role="button">教程帮助</a></p></div></div><div class="row"><div class="col-sm-2">其他</div><div class="col-sm-10"><p><a href="{:U('/n/' . 1)}" class="btn btn-default btn-xs nodes" role="button">分享发现</a></p></div></div><div class="row"><div class="col-sm-offset-2 col-sm-10"><p></p></div></div>                    </div>
+                        </div>
+                    <else />
+                    <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><a href="{:U('index/index')}">首页</a> / <a href="">{$nodeinfo.node}</a><a class="pull-right" href="{$nodeinfo.id}">加入收藏</a></h3>
+                    </div>
+                    <div class="panel-body">
+                    <ul class="media-list">
+
+                        <volist name="list" id="vo">
+
+                        <li class="media">
+                        <div class="pull-right">
+                            <span class="badge topic-comment"><a href="{:U('/t/' . $vo['id'])}#Reply">{$vo.review}</a></span>
+                        </div>
+                        <a class="media-left" href="{:U('/u/' . $vo['username'])}"><img class="img-rounded" src="__PUBLIC__/upload/{$vo.image}" height="45px" width="45px" alt="{$vo.username}_avatar"></a>
+                        <div class="media-body">
+                            <h4 class="media-heading topic-list-heading"><a href="{:U('/t/' . $vo['id'])}">{$vo.title}</a></h4>
+                            <p class="small text-muted">
+                                <span><a href="{:U('/t/' . $vo['nodeid'])}">{$vo.node}</a></span>&nbsp;•&nbsp;
+                                <span><a href="{:U('/u/' . $vo['username'])}">{$vo.username}</a></span>&nbsp;•&nbsp;
+                                <span>{$vo.creattime|geshidate}</span>
+                            </p>
+                        </div>
+                    </li>
+                    <hr class="smallhr">
+                    </volist>
+
+
+                    </ul>
+                    <ul class="pager">
+                        {$page}
+                    </ul>
+                    </div>
+                    </div><!-- /.topic list -->
+                        </present>
+            </div>
+                <include file="public/sidebar"/>
+            </div>
+        </div>
+<include file="public/footer"/>
+
+

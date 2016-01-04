@@ -1,0 +1,57 @@
+<include file="public/header" title="{:C('WEB_TITLE')} | {:C('WeB_INFO')}"/>
+<div class="container">
+<div class="row">
+<div class="col-md-8">
+<div class="panel panel-default">
+<div class="panel-heading">
+    <h3 class="panel-title">欢迎访问 {:C('WEB_TITLE')}</h3>
+</div>
+<ul class="list-group">
+    <li class="list-group-item list-tnode">
+        <a href="{:U('/n/' . 3)}" class="btn btn-default btn-sm" role="button">教程帮助</a><a href="{:U('/n/' . 2)}" class="btn btn-default btn-sm" role="button">程序发布</a><a href="{:U('/n/' . 4)}" class="btn btn-default btn-sm" role="button">反馈建议</a><a href="{:U('/n/' . 5)}" class="btn btn-default btn-sm" role="button">开发动态</a><a href="{:U('Index/index')}" class="btn btn-default btn-sm topshow" role="button">全部</a></li>
+</ul>
+<div class="panel-body">
+<ul class="media-list">
+    <volist name="list" id="vo">
+<li class="media">
+    <div class="pull-right">
+        <span class="badge topic-comment"><a href="{:U('/t/' . $vo['id'])}#Reply">{$vo.review}</a></span>
+    </div>
+    <a class="media-left" href="{:U('/u/' . $vo['username'])}"><img class="img-rounded" src="__PUBLIC__/upload/{$vo.image} " height="45px" width="45px" alt="{$vo.username}_avatar"></a>
+    <div class="media-body">
+        <h4 class="media-heading topic-list-heading"><a href="{:U('/t/' . $vo['id'])}">{$vo.title}</a></h4>
+        <p class="small text-muted">
+            <span><a href="{:U('/n/' . $vo['nodeid'])}">{$vo.node}</a></span>&nbsp;•&nbsp;
+            <span><a href="{:U('/u/' . $vo['username'])}">{$vo.username}</a></span>&nbsp;•&nbsp;
+            <span>{$vo.creattime|geshidate}</span>
+        </p>
+    </div>
+</li>
+<hr class="smallhr">
+</volist>
+</ul>
+    <nav>
+        <ul class="pager">
+            {$page}
+        </ul>
+    </nav>
+</div>
+</div><!-- /.topic list -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">节点导航<a href="{:U('node/index')}" class="pull-right">浏览所有节点</a></h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-2">官方专区</div>
+            <div class="col-sm-10">
+                <p><a href="{:U('/n/' . 5)}" class="btn btn-default btn-xs nodes" role="button">开发动态</a><a href="{:U('/n/' . 2)}" class="btn btn-default btn-xs nodes" role="button">程序发布</a></p></div></div>
+        <div class="row"><div class="col-sm-2">程序使用</div><div class="col-sm-10"><p><a href="{:U('/n/' . 4)}" class="btn btn-default btn-xs nodes" role="button">反馈建议</a><a href="{:U('/n/' . 3)}" class="btn btn-default btn-xs nodes" role="button">教程帮助</a></p></div></div><div class="row"><div class="col-sm-2">其他</div><div class="col-sm-10"><p><a href="{:U('/n/' . 1)}" class="btn btn-default btn-xs nodes" role="button">分享发现</a></p></div></div><div class="row"><div class="col-sm-offset-2 col-sm-10"><p></p></div></div>                    </div>
+</div><!-- /.node list -->
+</div><!-- /.col-md-8 -->
+<include file="public/sidebar"/>
+
+</div><!-- /.row -->
+</div><!-- /.container -->
+
+<include file="public/footer"/>

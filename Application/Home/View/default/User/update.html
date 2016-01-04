@@ -1,0 +1,92 @@
+<include file="public/header" xmlns="http://www.w3.org/1999/html"/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 ">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">修改{$user.username}资料   <small>(修改的信息将会在重新登录后生效)</small></h3>
+                </div>
+                <div class="panel-body">
+
+                    <span class="glyphicon glyphicon-user"></span>用户账号：<strong>{$user.username}</strong><br><br><br>
+                    <form method="post" action="{:U('User/update_do')}">
+                    <span class=" glyphicon glyphicon-envelope"></span>电子邮箱：
+
+
+                        <input type="email" class="form-control" placeholder="不公开，仅供登录和取回密码，务必正确填写且记住。" value="{$user.email}" name="email">
+
+                        <br>
+                    <span class="glyphicon glyphicon-globe"></span>个人站点：
+                    <input type="text" class="form-control" value="{$user.web}" name="web" placeholder="http://">
+                    <br>
+                        <span class="glyphicon glyphicon-comment"></span>个人简介：
+                        <input type="text" class="form-control" value="{$user.userinfo}" name="userinfo">
+
+
+                </div>
+                <div class="panel-footer">
+                  <button class="btn btn-success " type="submit"><span class="glyphicon glyphicon-floppy-disk"></span>  保存修改</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">修改{$user.username}密码   <small>(修改的信息将立即生效)</small></h3>
+                </div>
+                <div class="panel-body">
+
+                    <form method="post" action="{:U('User/setpasswd')}">
+                        <span class="glyphicon glyphicon-lock"></span>旧的密码：
+                        <input type="password" class="form-control" placeholder="请输入旧密码，忘记？请邮箱找回" name="oldpassword">
+                        <span class="glyphicon glyphicon-lock"></span>新的密码：
+                        <input type="password" class="form-control" placeholder="一定要保管好并且记住！" name="password">
+                        <span class="glyphicon glyphicon-lock"></span>确认密码：
+                        <input type="password" class="form-control" placeholder="一定要保管好并且记住！" name="repassword">
+
+
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-success " type="submit"><span class="glyphicon glyphicon-floppy-disk"></span>  保存修改</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">修改{$user.username}头像   <small>(修改的头像将会在重新登录后生效)</small></h3>
+                </div>
+                <form method="post" action="{:U('image')}" enctype="multipart/form-data">
+                <div class="panel-body">
+                    <div class="pull-left">
+                        <img src="{:C('USER_IMAGE')}{$userinfo.image}" class="pull-left img-rounded" height="200px" width="200px">
+                        <img src="{:C('USER_IMAGE')}{$userinfo.image}" class="pull-left img-rounded" height="100px" width="100px">
+                        <img src="{:C('USER_IMAGE')}{$userinfo.image}" class="pull-left img-rounded" height="45px" width="45px">
+
+                    </div>
+                    <div class="pull-right">
+                        <div class="form-group">
+                            <label for="exampleInputFile">头像上传</label>
+                            <input type="file" id="exampleInputFile" name="image">
+                            <p class="help-block">建议上传200*200大小的jpg,png,jpeg图片</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-success " type="submit"><span class="glyphicon glyphicon-floppy-open"></span>  提交修改</button>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+        <include file="public/singbar" />
+        <include file="public/footer"/>

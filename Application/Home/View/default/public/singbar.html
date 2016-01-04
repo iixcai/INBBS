@@ -1,0 +1,72 @@
+<div class="col-md-3 ">
+
+
+    <present name="userinfo">
+        <div class="list-group">
+            <a href="{:U('User/index')}" class="list-group-item">
+                <center>
+                     <img src="{:C('USER_IMAGE')}{$userinfo.image}"  class="img-rounded img-responsive" width="100px" height="100px">
+                </center>
+            </a>
+            <a href="#" class="list-group-item">未读提醒<span class="badge">待开发</span></a>
+            <a href="{:U('User/collect')}" class="list-group-item">收藏主题</a>
+            <a href="#" class="list-group-item">帐户金币<span class="badge">待开发</span></a>
+            <a href="{:U('Article/new_article')}" class="list-group-item">
+                {/*
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                        80%
+                    </div>
+                </div>
+                */}
+                <center>
+                <button class="btn btn-success "><span class="glyphicon glyphicon-send"></span>      创建新的主题</button>
+                    </center>
+            </a>
+        </div>
+        <else />
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">NNOW一个简单的社区</h3>
+            </div>
+            <div class="panel-body">
+                <center>
+                    <a href="{:U('Regist/index')}" class="btn btn-default">立即注册</a><br>
+
+                    <small>已有账号？<a href="{:U('Sign/index')}">马上登录</a></small>
+                </center>
+
+            </div>
+        </div>
+    </present>
+
+
+
+
+    {/*
+    <div class="list-group">
+        <a href="#" class="list-group-item active">
+            Cras justo odio
+        </a>
+        <a href="#" class="list-group-item">Dapibus ac facilisis in 42</a>
+        <a href="#" class="list-group-item">Morbi leo risus</a>
+        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+        <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
+    */}
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">社区运行情况</h3>
+        </div>
+        <div class="panel-body">
+            <p>注册会员<span class="badge pull-right">{$bbsinfo.usernum}</span></p>
+            <p>创建主题<span class="badge pull-right">{$bbsinfo.articlenum}</span> </p>
+            <p>主题回复<span class="badge pull-right">{$bbsinfo.articlenum}</span> </p>
+        </div>
+    </div>
+
+
+</div>
+</div>

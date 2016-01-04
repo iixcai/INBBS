@@ -1,0 +1,28 @@
+<include file="public/header" xmlns="http://www.w3.org/1999/html"/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 ">
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{$user.username}收藏的主题（最近十个）</h3>
+                </div>
+                <div class="panel-body">
+                    <volist name="usercollect" id="co">
+                        <a href="{:U('Article/index',array('id'=>$co['articleid']))}">{$co.title}</a><span class="badge pull-right">{$vo.review}</span>
+                        <hr>
+                    </volist>
+                    目前展示前十条
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+        <include file="public/singbar" />
+        <include file="public/footer"/>

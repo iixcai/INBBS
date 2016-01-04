@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{$title}</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/css/css.css">
+</head>
+<body>
+    <div class="sign-header">
+
+        <div class="container">
+            <div class="page-header">
+                <div class="head-font">
+                    <h1>{:C('WEB_TITLE')}</h1>
+                    <small>{:C('WEB_TITLE')}是一个自由开放的社区</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="page-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <h3>Sign up</h3>
+                    <div class="input-css"></div>
+                    <form method="post" action="{:U('Regist/signup')}">
+                        <div class="form-group">
+                            <label for="InputUsername">User name </label>
+                            <input type="username" class="form-control" id="InputUsername" placeholder="Username" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="InputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="InputEmail1" placeholder="Email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="InputPassword1">Password</label>
+                            <input type="password" class="form-control" id="InputPassword1" placeholder="Password" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="InputConfire">Confire Password</label>
+                            <input type="password" class="form-control" id="InputConfire" placeholder="Confire Password" name="repassword">
+                        </div>
+
+                        <div class="btn-css">
+                            <button type="submit" class="btn btn-success pull-left">Sign up</button>
+
+
+                        </div>
+                    </form>
+                    <div class="footer">
+                        <div class="page-header"></div>
+                        <p><a href="{:U('Sign/index')}" class="pull-left">登录</a> <a href="#" class="pull-right">忘记密码?</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
